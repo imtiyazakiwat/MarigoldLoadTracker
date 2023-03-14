@@ -71,17 +71,28 @@ function calculate() {
       // Add input fields to the new row
       
       for (var i = 0; i < 6; i++) {
-        var newCol = document.createElement("div");
-        newCol.classList.add("col-2");
-        var newInput = document.createElement("input");
-        newInput.classList.add("form-control");
-        newInput.setAttribute("type", "text");
-        newInput.setAttribute("id", "input" + count1); // add ID to the input element
-        newCol.appendChild(newInput);
-      
-        newRow.appendChild(newCol);
-        count1++;
-      }
+
+  var newCol = document.createElement("div");
+
+  newCol.classList.add("col-2"); // use col-2 class for fixed width columns
+
+  var newInput = document.createElement("input");
+
+  newInput.classList.add("form-control");
+
+  newInput.setAttribute("type", "text");
+
+  newInput.setAttribute("id", "input" + count1); // add ID to the input element
+
+  newCol.appendChild(newInput);
+
+  
+
+  newRow.appendChild(newCol);
+
+  count1++;
+
+}
       
   
       // Add the remove button to the new row
