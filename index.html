@@ -1,37 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Include jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- Include Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta http-equiv="Cache-Control" content="max-age=3600" />
+    <meta http-equiv="Expires" content="Mon, 1 Jan 2024 12:00:00 GMT" />
+    <!-- Include Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
-<style>
-  /* styles for mobile devices */
-@media (max-width: 767px) {
-  /* mobile styles go here */
-}
+  <style>
+    /* Styles for mobile devices */
 
-/* styles for tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-  /* tablet styles go here */
-}
+    @media only screen and (max-width: 768px) {
+      /* Styles for calculator */
+      .calculator {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        font-size: 20px;
+      }
+      #total-row input {
+        font-size: 12px;
+      }
+      #rows-container .form-control {
+        font-size: 12px;
+      }
+      #heading-row {
+        font-size: 12px;
+      }
+    }
 
-/* styles for desktop devices */
-@media (min-width: 1024px) {
-  /* desktop styles go here */
-}
+    /* Styles for desktop devices */
+    /* @media screen and (max-width: 767px) {
+  /* For screens smaller than 768px */
+    /* #total-row input {
+    font-size: 12px;
+  }
+} */
 
-.calculator {
+    /* @media screen and (min-width: 768px) {
+  /* For screens larger than 768px */
+    /* #total-row input {
+    font-size: 16px;
+  }
+} */
+
+    /* .calculator {
   font-size: 2em;
   width: 100%;
   max-width: 400px;
@@ -46,146 +71,273 @@
 .calculator.zoom {
   transform: scale(2);
   transform-origin: center;
-}
-
-</style>
+} */
+  </style>
   <body>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-12 text-right">
-                  <input
-                  type="text"
-                  class="form-control mb-2"
-                  id="calculation"
-                  readonly
-                />                </div>
+    <div class="calculator">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 text-right">
+                    <input
+                      type="text"
+                      class="form-control mb-2"
+                      id="calculation"
+                      readonly
+                    />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-block"
+                      id="btnClear"
+                      onclick="clearCalculation()"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-block"
+                      id="btnSign"
+                      onclick="calculateAll()"
+                    >
+                      CalcAll
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-block"
+                      id="btnPercent"
+                      onclick="calculatePercent()"
+                    >
+                      %
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-block"
+                      id="btnDivide"
+                      onclick="addToCalculation('/')"
+                    >
+                      /
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnSeven"
+                      onclick="addToCalculation('7')"
+                    >
+                      7
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnEight"
+                      onclick="addToCalculation('8')"
+                    >
+                      8
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnNine"
+                      onclick="addToCalculation('9')"
+                    >
+                      9
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-block"
+                      id="btnMultiply"
+                      onclick="addToCalculation('*')"
+                    >
+                      *
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnFour"
+                      onclick="addToCalculation('4')"
+                    >
+                      4
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnFive"
+                      onclick="addToCalculation('5')"
+                    >
+                      5
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnSix"
+                      onclick="addToCalculation('6')"
+                    >
+                      6
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-block"
+                      id="btnSubtract"
+                      onclick="addToCalculation('-')"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnOne"
+                      onclick="addToCalculation('1')"
+                    >
+                      1
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnTwo"
+                      onclick="addToCalculation('2')"
+                    >
+                      2
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnThree"
+                      onclick="addToCalculation('3')"
+                    >
+                      3
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-block"
+                      id="btnAdd"
+                      onclick="addToCalculation('+')"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-6">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      id="btnZero"
+                      onclick="addToCalculation('0')"
+                    >
+                      0
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      onclick="clearDisplay()"
+                    >
+                      C
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-light btn-block"
+                      onclick="calculate()"
+                    >
+                      =
+                    </button>
+                  </div>
+                </div>
+                <p>Total bags: <span id="totalBags">0</span></p>
+                <p>Less bag weight: <span id="lessBagWeight">0</span></p>
+                <p>C.qty: <span id="cQty">0</span></p>
               </div>
-              <div class="row mt-3">
-                <div class="col-3">
-                  <button type="button" class="btn btn-secondary btn-block" id="btnClear" onclick="clearCalculation()">Clear</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-secondary btn-block" id="btnSign" onclick="calculateAll()">CalcAll</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-secondary btn-block" id="btnPercent" onclick="calculatePercent()">%</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-warning btn-block" id="btnDivide" onclick="addToCalculation('/')">/</button>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnSeven" onclick="addToCalculation('7')">7</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnEight" onclick="addToCalculation('8')">8</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnNine" onclick="addToCalculation('9')">9</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-warning btn-block" id="btnMultiply" onclick="addToCalculation('*')">*</button>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnFour" onclick="addToCalculation('4')">4</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnFive" onclick="addToCalculation('5')">5</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnSix" onclick="addToCalculation('6')">6</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-warning btn-block" id="btnSubtract" onclick="addToCalculation('-')">-</button>
-                </div>
-              </div>
-              <div class="row  mt-3">
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnOne" onclick="addToCalculation('1')">1</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnTwo" onclick="addToCalculation('2')">2</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" id="btnThree" onclick="addToCalculation('3')">3</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-warning btn-block" id="btnAdd" onclick="addToCalculation('+')">+</button>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-6">
-                  <button type="button" class="btn btn-light btn-block" id="btnZero" onclick="addToCalculation('0')">0</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block" onclick="clearDisplay()">C</button>
-                </div>
-                <div class="col-3">
-                  <button type="button" class="btn btn-light btn-block " onclick="calculate()">=</button>
-                </div>
-              </div>
-              <p>Total bags: <span id="totalBags">0</span></p>
-                      <p>Less bag weight: <span id="lessBagWeight">0</span></p>
-                      <p>C.qty: <span id="cQty">0</span></p>
             </div>
           </div>
         </div>
       </div>
     </div>
-       
-    
-<div class="container">
-  <div class="row">
-    <div class="col-2 form-label" id="farmercode-input"><strong>1. Farmer Code</strong></div>
-    <div class="col-2 form-label" id="qty-input"><strong>2. No. of Bags</strong></div>
-    <div class="col-2 form-label" id="qty-value-input"><strong>3. Qty</strong></div>
-    <div class="col-2 form-label"><strong>4. Less Bag Weight</strong></div>
-    <div class="col-2 form-label"><strong>5. Net Wt</strong></div>
-    <div class="col-2 form-label"><strong>6. C. Qty</strong></div>
-  </div>
-  <div id="rows-container">
-    <!-- Rows will be dynamically added here -->
-  </div>
-  <div class="row" id="total-row">
-    <div class="col-2"><strong>Total</strong></div>
-    <div class="col-2">
-      <input type="text" class="form-control" placeholder="0" readonly />
-    </div>
-    <div class="col-2">
-      <input type="text" class="form-control" placeholder="0.00" readonly />
-    </div>
-    <div class="col-2">
-      <input type="text" class="form-control" placeholder="0.00" readonly />
-    </div>
-    <div class="col-2">
-      <input type="text" class="form-control" placeholder="0.00" readonly />
-    </div>
-    <div class="col-2">
-      <input type="text" class="form-control" placeholder="0.00" readonly />
-    </div>
-  </div>
-  <button class="btn btn-primary mt-3" id="add-row-btn">Add Row</button>
-</div>
 
-<style>
-  /* Style adjustments for mobile devices */
-  @media only screen and (max-width: 767px) {
-    .form-label {
-      margin-top: 10px;
-    }
-    #total-row {
-      margin-top: 20px;
-    }
-  }
-</style>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="all.js"></script>   
-</body>
+    <div class="container">
+      <div class="row" id="heading-row">
+        <div class="col-2 form-label" id="farmercode-input">
+          <strong>1. Farmer Code</strong>
+        </div>
+        <div class="col-2 form-label" id="qty-input">
+          <strong>2. No. of Bags</strong>
+        </div>
+        <div class="col-2 form-label" id="qty-value-input">
+          <strong>3. Qty</strong>
+        </div>
+        <div class="col-2 form-label"><strong>4. Less Bag Weight</strong></div>
+        <div class="col-2 form-label"><strong>5. Net Wt</strong></div>
+        <div class="col-2 form-label"><strong>6. C. Qty</strong></div>
+      </div>
+      <div id="rows-container">
+        <!-- Rows will be dynamically added here -->
+      </div>
+      <div class="row no-gutters" id="total-row">
+        <div class="col-2"><strong>Total</strong></div>
+        <div class="col-2">
+          <input type="text" class="form-control" placeholder="0" readonly />
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" placeholder="0.00" readonly />
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" placeholder="0.00" readonly />
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" placeholder="0.00" readonly />
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" placeholder="0.00" readonly />
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" id="add-row-btn">Add Row</button>
+    </div>
+    <style></style>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="all.js"></script>
+  </body>
 </html>
