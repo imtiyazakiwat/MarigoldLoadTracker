@@ -18,6 +18,18 @@
     <meta http-equiv="Expires" content="Mon, 1 Jan 2024 12:00:00 GMT" />
     <!-- Include Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(function(registration) {
+              console.log('Service Worker registered with scope:', registration.scope);
+            }, function(error) {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
   </head>
   <style>
     /* Styles for mobile devices */
