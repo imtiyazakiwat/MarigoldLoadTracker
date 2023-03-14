@@ -96,16 +96,9 @@ function calculate() {
       
   
       // Add the remove button to the new row
-      var removeRowButton = document.createElement("button");
-removeRowButton.innerHTML = "Remove Row";
-removeRowButton.classList.add("btn", "btn-danger");
-removeRowButton.onclick = function () {
-  rowsContainer.removeChild(newRow);
-  count1 -= 6; // subtract 6 from count1
-  rclicked++;
-}; 
+      
 
-      newRow.appendChild(removeRowButton);
+      //newRow.appendChild(removeRowButton);
   
       // Add the new row to the rows container
       rowsContainer.appendChild(newRow);
