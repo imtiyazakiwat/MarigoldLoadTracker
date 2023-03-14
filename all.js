@@ -66,15 +66,14 @@ function calculate() {
   
       // Create a new row element
       var newRow = document.createElement("div");
-      newRow.classList.add("row");
-  
-      // Add input fields to the new row
-      
-      for (var i = 0; i < 6; i++) {
+
+newRow.classList.add("row", "no-gutters"); // add no-gutters class to remove spacing between columns
+
+for (var i = 0; i < 6; i++) {
 
   var newCol = document.createElement("div");
 
-  newCol.classList.add("col-2"); // use col-2 class for fixed width columns
+  newCol.classList.add("col-2");
 
   var newInput = document.createElement("input");
 
@@ -86,10 +85,13 @@ function calculate() {
 
   newCol.appendChild(newInput);
 
-  
-
   newRow.appendChild(newCol);
 
+  count1++;
+
+}
+
+document.getElementById("rows-container").appendChild(newRow);
   count1++;
 
 }
