@@ -1,10 +1,10 @@
 
 const cacheName = 'my-website-cache-v1';
 const assetsToCache = [
-  '/',
-  '/index.html',
-  '/all.js',
-  '/service-worker.js'
+  '#',
+  'index.html',
+  'all.js',
+  'service-worker.js'
 ];
 
 self.addEventListener('install', function(event) {
