@@ -105,7 +105,7 @@ function calculateAll() {
     rowsContainer.appendChild(newRow);
 
     // Set the focus to the first input field in the new row
-    $(newRow).find("input:first").focus();
+    // $(newRow).find("input:first").focus();
     
     
     //fill values auto
@@ -174,20 +174,25 @@ $(document).ready(function () {
 
     // Create a new row element
     var newRow = document.createElement("div");
-    newRow.classList.add("row");
+    newRow.classList.add("row", "no-gutters"); // add no-gutters class to remove spacing between columns
+
 
     // Add input fields to the new row
+    
     for (var i = 0; i < 6; i++) {
       var newCol = document.createElement("div");
-      newCol.classList.add("col-sm-2");
-
+      newCol.classList.add("col-2");
       var newInput = document.createElement("input");
       newInput.classList.add("form-control");
       newInput.setAttribute("type", "text");
+      newInput.setAttribute("id", "input" + count1); // add ID to the input element
       newCol.appendChild(newInput);
-
+    
       newRow.appendChild(newCol);
+      count1++;
     }
+    
+    document.getElementById("rows-container").appendChild(newRow);
 
     // Add the remove button to the new row
     var removeRowButton = document.createElement("button");
@@ -203,7 +208,7 @@ $(document).ready(function () {
     rowsContainer.appendChild(newRow);
 
     // Set the focus to the first input field in the new row
-    $(newRow).find("input:first").focus();
+    // $(newRow).find("input:first").focus();
   }
 
   // Function to update the total row
