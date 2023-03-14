@@ -1,20 +1,3 @@
-let calculation = "";
-let totalSum = 0;
-let totalBags = 0;
-let lessBagWeight = 0;
-let cQty = 0;
-let c1Clicked = 0;
-let cClicked = 0;
-let alltotalBags = 0;
-let count = -4;
-let count1 = 6;
-let rclicked =0;
-
-function addToCalculation(value) {
-  calculation += value;
-  document.getElementById("calculation").value = calculation;
-}
-
 
 let clickCount = 0;
 
@@ -66,14 +49,15 @@ function calculate() {
   
       // Create a new row element
       var newRow = document.createElement("div");
-
-newRow.classList.add("row", "no-gutters"); // add no-gutters class to remove spacing between columns
-
-for (var i = 0; i < 6; i++) {
+      newRow.classList.add("row");
+  
+      // Add input fields to the new row
+      
+      for (var i = 0; i < 6; i++) {
 
   var newCol = document.createElement("div");
 
-  newCol.classList.add("col-2");
+  newCol.classList.add("col-2"); // use col-2 class for fixed width columns
 
   var newInput = document.createElement("input");
 
@@ -85,13 +69,10 @@ for (var i = 0; i < 6; i++) {
 
   newCol.appendChild(newInput);
 
+  
+
   newRow.appendChild(newCol);
 
-  count1++;
-
-}
-
-document.getElementById("rows-container").appendChild(newRow);
   count1++;
 
 }
