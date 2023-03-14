@@ -143,36 +143,37 @@
     
 <div class="container">
   <div class="row">
-    <div class="col-sm-3 col-md-2 form-label" id="farmercode-input"><strong>1. Farmer Code</strong></div>
-  <div class="col-sm-3 col-md-2 form-label" id="qty-input"><strong>2. No. of Bags</strong></div>
-  <div class="col-sm-3 col-md-2 form-label" id="qty-value-input"><strong>3. Qty</strong></div>
-    <div class="col-sm-3 col-md-2 form-label"><strong>4. Less Bag Weight</strong></div>
-    <div class="col-sm-3 col-md-2 form-label"><strong>5. Net Wt</strong></div>
-    <div class="col-sm-3 col-md-2 form-label"><strong>6. C. Qty</strong></div>
+    <div class="col-2 form-label" id="farmercode-input"><strong>1. Farmer Code</strong></div>
+    <div class="col-2 form-label" id="qty-input"><strong>2. No. of Bags</strong></div>
+    <div class="col-2 form-label" id="qty-value-input"><strong>3. Qty</strong></div>
+    <div class="col-2 form-label"><strong>4. Less Bag Weight</strong></div>
+    <div class="col-2 form-label"><strong>5. Net Wt</strong></div>
+    <div class="col-2 form-label"><strong>6. C. Qty</strong></div>
   </div>
   <div id="rows-container">
     <!-- Rows will be dynamically added here -->
   </div>
   <div class="row" id="total-row">
-    <div class="col-sm-3 col-md-2"><strong>Total</strong></div>
-    <div class="col-sm-3 col-md-2">
+    <div class="col-2"><strong>Total</strong></div>
+    <div class="col-2">
       <input type="text" class="form-control" placeholder="0" readonly />
     </div>
-    <div class="col-sm-3 col-md-2">
+    <div class="col-2">
       <input type="text" class="form-control" placeholder="0.00" readonly />
     </div>
-    <div class="col-sm-3 col-md-2">
+    <div class="col-2">
       <input type="text" class="form-control" placeholder="0.00" readonly />
     </div>
-    <div class="col-sm-3 col-md-2">
+    <div class="col-2">
       <input type="text" class="form-control" placeholder="0.00" readonly />
     </div>
-    <div class="col-sm-3 col-md-2">
+    <div class="col-2">
       <input type="text" class="form-control" placeholder="0.00" readonly />
     </div>
   </div>
   <button class="btn btn-primary mt-3" id="add-row-btn">Add Row</button>
 </div>
+
 <style>
   /* Style adjustments for mobile devices */
   @media only screen and (max-width: 767px) {
