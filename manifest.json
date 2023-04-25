@@ -1,0 +1,21 @@
+{
+    "name": "AVT ROUGH-AND-ONLINE",
+    "short_name": "AVT ONLINE",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+      { 
+        "src": "icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "cache": [
+      "index.html",
+      "app.js",
+      "style.css",
+      "icon.png"
+    ]
+  }
