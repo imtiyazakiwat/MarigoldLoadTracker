@@ -1,21 +1,26 @@
 {
-    "name": "AVT ROUGH-AND-ONLINE",
-    "short_name": "AVT ONLINE",
-    "start_url": "index.html",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
+    "name": "AVT ROUGH-ONLINE",
+    "short_name": "AVT-ONLINE",
+    "description": "This website is created by imtiyaz akiwat to make rough and online calculations very easy , while using claculator app in this website we can write online page automatically ",
     "icons": [
-      { 
-        "src": "icon.png",
+      {
+        "src": "icon-192x192.png",
         "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icon-512x512.png",
+        "sizes": "512x512",
         "type": "image/png"
       }
     ],
-    "cache": [
-      "index.html",
-      "app.js",
-      "style.css",
-      "icon.png"
-    ]
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff",
+    "offline_enabled": true,
+    "scope": "/",
+    "serviceworker": {
+      "src": "/service-worker.js"
+    }
   }
