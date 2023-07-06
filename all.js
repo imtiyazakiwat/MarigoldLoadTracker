@@ -13,6 +13,7 @@ let numofrows = 0;
 // var numRow =0;
 let continueclicked = 0;
 let datasaved =0 ;
+let clickCount =0;
 
 var rowCount = 1;
 // document.getElementById("add-row-btn").addEventListener("click", addRow);
@@ -119,7 +120,7 @@ function backspace() {
 }
 
 
-let clickCount = 0;
+// let clickCount = 0;
 
 function clearCalculation() {
   document.getElementById("calculation").value = "";
@@ -135,19 +136,24 @@ function clearCalculation() {
 }
 
 function calculate() {
-  // c1Clicked++;
-  const sum = eval(calculation);
-  totalBags += (calculation.match(/[0-9.]+/g) || []).length;
-  totalSum += sum;
-  lessBagWeight1 = Math.ceil(totalBags / 2);
-  cQty = totalSum - lessBagWeight1;
+  clickCount++;
+  if (clickCount === 2) {
+    calculateAll();
+    clickCount = 0;
+  }
 
-  document.getElementById("calculation").value = sum;
-  calculation = "" + sum;
+  else {
+    const sum = eval(calculation);
+    totalBags += (calculation.match(/[0-9.]+/g) || []).length;
+    totalSum += sum;
+    lessBagWeight1 = Math.ceil(totalBags / 2);
+    cQty = totalSum - lessBagWeight1;
+  
+    document.getElementById("calculation").value = sum;
+    calculation = "" + sum;
+  }
+ 
 
-  // document.getElementById("totalBags").textContent = totalBags;
-  // document.getElementById("lessBagWeight").textContent = lessBagWeight;
-  // document.getElementById("cQty").textContent = cQty;
 }
 
 function clearDisplay() {
