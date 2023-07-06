@@ -104,6 +104,7 @@ function addToCalculation(value) {
   } else {
     calculation += value;
     calculationInput.value = calculation;
+    calculationInput.scrollLeft = calculationInput.scrollWidth;
   }
 }
 
