@@ -1,0 +1,138 @@
+/* Styles for the calculator */
+.calculator {
+    border: 1px solid #c9c9c9;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  #btnClear,
+  #btnSign {
+    font-size: 20px;
+    padding: 20px;
+    width: 206%;
+  }
+  
+  .clearbutton {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .clearbuttonbtn {
+    width: 200%;
+  }
+  
+  .slashbtn {
+    padding-left: 101px;
+  }
+  
+  /* Styles to make the calculator buttons visually appealing */
+  .btn-secondary,
+  .btn-light {
+    background-color: #e5e5e5;
+    color: #000;
+    border: 1px solid #c9c9c9;
+    box-shadow: none;
+    font-size: 30px;
+    padding: 20px;
+  }
+  
+  .btn-secondary:hover,
+  .btn-light:hover {
+    background-color: #d9d9d9;
+    color: #000;
+  }
+  
+  .btn-warning {
+    background-color: #ff9500;
+    color: #fff;
+    border: 1px solid #e67300;
+    box-shadow: none;
+    font-size: 30px;
+    padding: 20px;
+  }
+  
+  .btn-warning:hover {
+    background-color: #ffac33;
+    border-color: #e67300;
+  }
+  
+  /* Styling for the input display */
+  #calculation {
+    font-size: 48px;
+    text-align: right;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    color: #000;
+  }
+  
+  /* Styling for the rows and input fields */
+  .row {
+    margin-bottom: 10px;
+  }
+  
+  .col-2 {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  
+  .form-control {
+    height: 60px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Styling for the total row */
+  #total-row {
+    margin-top: 20px;
+  }
+  
+  /* Styling for the add row and save buttons */
+  #add-row-btn,
+  #save-btn {
+    margin-top: 20px;
+  }
+  
+  #heading-row {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Additional styles for mobile devices */
+  @media only screen and (max-width: 768px) {
+    .calculator {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+  
+    .container {
+      margin-top: 20px;
+    }
+  
+    #btnClear,
+    #btnSign {
+      font-size: 20px;
+      padding: 20px;
+      width: 206%;
+    }
+  
+    .clearbutton {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .clearbuttonbtn {
+      width: 200%;
+    }
+  
+    .slashbtn {
+      padding-left: 101px;
+    }
+  }
+  
