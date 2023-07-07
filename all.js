@@ -50,6 +50,12 @@ window.addEventListener ("load", function () {
     // The page is reloaded, show the continue button
     continueButton.style.visibility = "visible";
   }
+  
+    // Set up event listener for the "Save" button
+    document.getElementById("save-btn").addEventListener("click", saveData);
+
+    // Set up event listener for the "Continue" button
+    document.getElementById("continue-btn").addEventListener("click", continueData);
 });
 
 // This function saves the data and the number of rows in local storage
