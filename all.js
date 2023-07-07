@@ -124,6 +124,7 @@ function backspace() {
 // let clickCount = 0;
 
 function clearCalculation() {
+  cClicked=0;
   document.getElementById("calculation").value = "";
   calculation = "";
   totalSum = 0;
@@ -138,6 +139,7 @@ function clearCalculation() {
 
 function calculate() {
   clickCount++;
+  cClicked=0;
   if (clickCount === 2) {
     calculateAll();
     clickCount = 0;
@@ -152,6 +154,7 @@ function calculate() {
   
     document.getElementById("calculation").value = sum;
     calculation = "" + sum;
+    calculationInput.style.fontSize = 48;
   }
  
 
@@ -160,9 +163,16 @@ function calculate() {
 function clearDisplay() {
   document.getElementById("calculation").value = "";
   calculation = "";
+  cClicked++;
+  clickCount=0;
+  if(cClicked ==2){
+    clearCalculation();
+    clickCount=0;
+  }
 }
 
 function calculateAll() {
+
   document.getElementById("calculation").value = totalSum;
   calculation = "" + totalSum;
   alltotalBags += totalBags;
@@ -271,6 +281,8 @@ function calculateAll() {
   $("#total-row input:eq(4)").val(totalCQty.toFixed(2));
   // updateTotalRow();
 }
+
+
 
 function addRow() {
   // Get the rows container

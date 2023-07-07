@@ -12,6 +12,7 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="temp.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Include jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,409 +20,45 @@
     <meta http-equiv="Expires" content="Mon, 1 Jan 2024 12:00:00 GMT" />
     <!-- Include Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.mini.js"></script>
+
+
   </head>
   <style>
-    /* Styles for mobile devices */
-
-    /* Styles for mobile devices */
-@media only screen and (max-width: 768px) {
-  .calculator {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
-
-  .container {
-    margin-top: 20px;
-  }
-
-  #btnClear,
-  #btnSign {
-    font-size: 20px;
-    padding: 20px;
-    width: 206%;
-  }
-  .clearbutton {
-    display: flex;
-    justify-content: center;
-  }
-
-  .clearbuttonbtn {
-    width: 200%;
-  }
-  .slashbtn{
-    padding-left: 101px;
-  }
-
-}
-/* Media query for device with dimensions 1080 x 2340 */
-@media only screen and (max-width: 1080px) and (max-height: 2340px) {
-  .calculator {
-    max-width: 400px;
-    font-size: 24px;
-  }
-
-  .btn-secondary,
-  .btn-light,
-  .btn-warning {
-    padding: 16px;
-  }
-
-  #calculation {
-    font-size: 36px;
-    padding: 16px;
-  }
-
-  .container {
-    padding: 16px;
-  }
-}
-/* Styles for desktop devices */
-@media only screen and (min-width: 769px) {
-  .calculator {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-
-  .container {
-    margin-top: 0;
-  }
-}
-
-/* Styles to make the calculator resemble iOS calculator app */
-.calculator {
-  border: 1px solid #c9c9c9;
-  border-radius: 8px;
-  background-color: #f7f7f7;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.card {
-  border: none;
-  box-shadow: none;
-}
-
-#calculation {
-  font-size: 48px;
-  text-align: right;
-  border: none;
-  background-color: transparent;
-  padding: 10px;
-  color: #000;
-}
-
-.btn-secondary,
-.btn-light {
-  background-color: #e5e5e5;
-  color: #000;
-  border: 1px solid #c9c9c9;
-  box-shadow: none;
-  font-size: 30px;
-}
-
-.btn-secondary:hover,
-.btn-light:hover {
-  background-color: #d9d9d9;
-  color: #000;
-}
-
-.btn-warning {
-  background-color: #ff9500;
-  color: #fff;
-  border: 1px solid #e67300;
-  box-shadow: none;
-  font-size: 30px;
-}
-
-.btn-warning:hover {
-  background-color: #ffac33;
-  border-color: #e67300;
-}
-
-.container {
-  padding: 20px;
-}
-
-
-    /* Styles for desktop devices */
-@media only screen and (min-width: 769px) {
-  .calculator {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-
-  .container {
-    margin-top: 0;
-  }
-
-  #btnClear,
-  #btnSign {
-    font-size: 24px;
-    padding: 16px;
-    width: 100%;
-  }
-}
-
-
-    /* @media screen and (min-width: 768px) {
-  /* For screens larger than 768px */
-    /* #total-row input {
-    font-size: 16px;
-  }
-} */
-
-    /* .calculator {
-  font-size: 2em;
-  width: 100%;
-  max-width: 400px;
-}
-
-.calculator {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.calculator.zoom {
-  transform: scale(2);
-  transform-origin: center;
-} */
+ 
   </style>
   <body>
     <div class="calculator">
-      <div class="container mt-5">
+        <input type="text" id="calculation" readonly>
         <div class="row">
-          <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-12 text-right">
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      id="calculation"
-                      readonly
-                    />
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-3 , clearbutton">
-                    <button
-                      type="button"
-                      class="btn btn-secondary btn-block clearbuttonbtn"
-                      id="btnClear"
-                      onclick="clearCalculation()"
-                    >
-                      Clear
-                    </button>
-                  </div>
-                  <!-- <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-secondary btn-block"
-                      id="btnSign"
-                      onclick="calculateAll()"
-                    >
-                      CalcAll
-                    </button>
-                  </div> -->
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-secondary btn-block"
-                      id="btnPercent"
-                      onclick="calculatePercent()"
-                    >
-                      %
-                    </button>
-                  </div>
-                  <div class="col-3, slashbtn">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-block"
-                      id="btnDivide"
-                      onclick="addToCalculation('/')"
-                    >
-                      /
-                    </button>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnSeven"
-                      onclick="addToCalculation('7')"
-                    >
-                      7
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnEight"
-                      onclick="addToCalculation('8')"
-                    >
-                      8
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnNine"
-                      onclick="addToCalculation('9')"
-                    >
-                      9
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-block"
-                      id="btnMultiply"
-                      onclick="addToCalculation('*')"
-                    >
-                      *
-                    </button>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnFour"
-                      onclick="addToCalculation('4')"
-                    >
-                      4
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnFive"
-                      onclick="addToCalculation('5')"
-                    >
-                      5
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnSix"
-                      onclick="addToCalculation('6')"
-                    >
-                      6
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-block"
-                      id="btnSubtract"
-                      onclick="addToCalculation('-')"
-                    >
-                      -
-                    </button>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnOne"
-                      onclick="addToCalculation('1')"
-                    >
-                      1
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnTwo"
-                      onclick="addToCalculation('2')"
-                    >
-                      2
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnThree"
-                      onclick="addToCalculation('3')"
-                    >
-                      3
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-block"
-                      id="btnAdd"
-                      onclick="addToCalculation('+')"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      id="btnzero"
-                      onclick="addToCalculation('0')"
-                    >
-                      0
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      onclick="clearDisplay()"
-                    >
-                      C
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-light btn-block"
-                      onclick="calculate()"
-                    >
-                      =
-                    </button>
-                  </div>
-                  <div class="col-3">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-block"
-                      id="btnBackspace"
-                      onclick="addToCalculation('bksp')"
-                     >
-                     ←
-                    </button>
-                  </div>
-                </div>
-                
-                <p>Total bags: <span id="totalBags">0</span></p>
+          <button class="button gray" onclick="addToCalculation('7')">7</button>
+          <button class="button gray" onclick="addToCalculation('8')">8</button>
+          <button class="button gray" onclick="addToCalculation('9')">9</button>
+          <button class="button orange" onclick="addToCalculation('/')">÷</button>
+        </div>
+        <div class="row">
+          <button class="button gray" onclick="addToCalculation('4')">4</button>
+          <button class="button gray" onclick="addToCalculation('5')">5</button>
+          <button class="button gray" onclick="addToCalculation('6')">6</button>
+          <button class="button orange" onclick="addToCalculation('*')">×</button>
+        </div>
+        <div class="row">
+          <button class="button gray" onclick="addToCalculation('1')">1</button>
+          <button class="button gray" onclick="addToCalculation('2')">2</button>
+          <button class="button gray" onclick="addToCalculation('3')">3</button>
+          <button class="button orange" onclick="addToCalculation('-')">−</button>
+        </div>
+        <div class="row">
+          <button class="button gray double" onclick="addToCalculation('0')">0</button>
+          <button class="button gray" onclick="clearDisplay()">C</button>
+          <button class="button gray" onclick="calculate()">=</button>
+          <button class="button orange" onclick="addToCalculation('+')">+</button>
+        </div>
+        <p>Total bags: <span id="totalBags">0</span></p>
                 <p>Less bag weight: <span id="lessBagWeight">0</span></p>
                 <p>C.qty: <span id="cQty">0</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    
 
     <div class="container">
       <div class="row" id="heading-row">
@@ -463,6 +100,7 @@
       <button class="btn btn-primary mt-3" id="add-row-btn">Add Row</button>
       <input class="btn btn-primary mt-3" type="button" id="save-btn" value="Save">
       <input class="btn btn-primary mt-3" type="button" id="continue-btn" value="Continue">
+      <!-- <button type="button" id="exportBtn">Export to PDF</button> -->
     </div>
     <style></style>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
