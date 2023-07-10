@@ -79,7 +79,8 @@
 /* Small devices (up to 576px) */
 @media (max-width: 576px) {
   .calculator {
-    margin-top: 3rem;
+    margin-top: -44px;
+    padding: 0px;
   }
 
   /* Calculator buttons */
@@ -100,6 +101,11 @@
   .calculator {
     margin-top: 4rem;
   }
+  .row {
+    margin-top: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   /* Calculator buttons */
   .btn-block {
@@ -111,6 +117,9 @@
   #total-row {
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
+  }
+  .col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3{
+    padding: 0px;
   }
 }
 
